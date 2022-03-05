@@ -8,7 +8,9 @@ export default createGlobalStyle`
     }
 
     body {
-        background:  #121212;
+        display: flex;
+        justify-content: center;
+        background:  #181818;
         font-size: 14px;
         color: #fff;
         font-family: roboto-mono;

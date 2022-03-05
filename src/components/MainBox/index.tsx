@@ -1,10 +1,12 @@
 import React from "react";
-import { Box } from "./styles";
+import { Box, ButtonGenerator, ButtonGeneratorText } from "./styles";
 
 export default function MainBox() {
   return (
-    <div>
-      <Box />
-    </div>
+    <Box>
+      <ButtonGenerator>
+        <ButtonGeneratorText>Gerar senha</ButtonGeneratorText>
+      </ButtonGenerator>
+    </Box>
   );
 }
