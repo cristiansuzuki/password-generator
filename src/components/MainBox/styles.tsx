@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box = styled.div`
+export const BoxStyled = styled.div`
   background-color: #121212;
   height: 500px;
   width: 900px;
@@ -12,15 +12,30 @@ export const Box = styled.div`
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
 `;
 
 export const ButtonGenerator = styled.button`
   height: 70px;
-  width: 50%;
+  width: 100%;
   background: #181818;
   border: 1px solid #007a33;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+`;
+
+export const DivAlignCenter = styled.div``;
+
+export const DivAlignCheckbox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+`;
+
+export const CheckBoxText = styled.text`
+  font-family: monospace;
+  font-size: 18px;
 `;
 
 export const ButtonGeneratorText = styled.text`
@@ -31,7 +46,7 @@ export const ButtonGeneratorText = styled.text`
 
 export const ButtonGeneratorInput = styled.input`
   height: 70px;
-  width: 80%;
+  width: 100%;
   background: #181818;
   border: 1px solid #007a33;
   color: #fff;
