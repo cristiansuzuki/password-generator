@@ -54,4 +54,5 @@ export const ButtonGeneratorInput = styled.input`
   padding: 15px;
   font-size: 22px;
   text-align: center;
+  font-family: monospace;
 `;

@@ -47,51 +47,23 @@ export default function MainBox() {
       lista = lista + especiais;
     }
 
-    setPassword(lista);
+    setPassword(gerarSenha(lista));
+  };
+
+  const gerarSenha = (lista) => {
+    let senha = "";
+    const tamanho = lista.length;
+
+    for (let i = 0; i < passwordLength; i++) {
+      const index = Math.round(Math.random() * tamanho);
+      senha = senha + lista.charAt(index);
+    }
+    return senha;
   };
 
   // function escutaValor() {
   //   console.log(numeros);
   // }
-
-  const PrettoSlider = styled(Slider)({
-    color: "#52af77",
-    height: 8,
-    "& .MuiSlider-track": {
-      border: "none",
-    },
-    "& .MuiSlider-thumb": {
-      height: 24,
-      width: 24,
-      backgroundColor: "#fff",
-      border: "2px solid currentColor",
-      "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
-        boxShadow: "inherit",
-      },
-      "&:before": {
-        display: "none",
-      },
-    },
-    "& .MuiSlider-valueLabel": {
-      lineHeight: 1.2,
-      fontSize: 12,
-      background: "unset",
-      padding: 0,
-      width: 32,
-      height: 32,
-      borderRadius: "50% 50% 50% 0",
-      backgroundColor: "#52af77",
-      transformOrigin: "bottom left",
-      transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
-      "&:before": { display: "none" },
-      "&.MuiSlider-valueLabelOpen": {
-        transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
-      },
-      "& > *": {
-        transform: "rotate(45deg)",
-      },
-    },
-  });
 
   return (
     <BoxStyled>
@@ -143,11 +115,15 @@ export default function MainBox() {
         </DivAlignCheckbox>
       </DivAlignCenter>
 
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
+      <Slider
+        color="success"
+        aria-label="Small steps"
+        defaultValue={0.00000005}
+        step={1}
+        marks
         min={5}
         max={20}
+        valueLabelDisplay="auto"
         value={passwordLength}
         onChange={(e) => setPasswordLength(e.target.value)}
       />
