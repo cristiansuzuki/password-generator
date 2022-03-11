@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Checkbox } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
 import Slider from "@mui/material/Slider";
@@ -15,6 +15,17 @@ import {
 } from "./styles";
 
 export default function MainBox() {
+  const [password, setPassword] = useState("");
+  const [passwordLength, setPasswordLength] = useState(20);
+  const [maiusculas, setMaiusculas] = useState(false);
+  const [minusculas, setMinusculas] = useState(false);
+  const [numeros, setNumeros] = useState(false);
+  const [caracteresEspeciais, setCaracteresEspeciais] = useState(false);
+
+  function escutaValor() {
+    console.log(passwordLength);
+  }
+
   const PrettoSlider = styled(Slider)({
     color: "#52af77",
     height: 8,
@@ -56,21 +67,21 @@ export default function MainBox() {
 
   return (
     <BoxStyled>
-      <ButtonGeneratorInput />
+      <ButtonGeneratorInput value={password} />
 
       <DivAlignCenter>
         <DivAlignCheckbox style={{ marginBottom: "8%" }}>
-          <Checkbox color="success" bigger />
+          <Checkbox animation="jelly" color="success" bigger />
           <CheckBoxText>Numeros</CheckBoxText>
         </DivAlignCheckbox>
 
         <DivAlignCheckbox style={{ marginBottom: "8%" }}>
-          <Checkbox color="success" bigger />
+          <Checkbox animation="jelly" color="success" bigger />
           <CheckBoxText>Caracteres Especiais</CheckBoxText>
         </DivAlignCheckbox>
 
         <DivAlignCheckbox>
-          <Checkbox color="success" bigger />
+          <Checkbox animation="jelly" color="success" bigger />
           <CheckBoxText>Letras Maiúsculas</CheckBoxText>
         </DivAlignCheckbox>
       </DivAlignCenter>
@@ -78,13 +89,13 @@ export default function MainBox() {
       <PrettoSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"
-        step={1}
-        marks
         min={5}
         max={20}
+        value={passwordLength}
+        onChange={(e) => setPasswordLength(e.target.value)}
       />
 
-      <ButtonGenerator>
+      <ButtonGenerator onClick={escutaValor}>
         <ButtonGeneratorText>Gerar senha</ButtonGeneratorText>
       </ButtonGenerator>
     </BoxStyled>
