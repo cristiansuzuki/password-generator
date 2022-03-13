@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { Checkbox } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
 import Slider from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
+import { FiCopy } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { COPY_SUCCESS } from "../../message";
+
 import {
   caractereNumero,
   caractereMaiusculo,
@@ -18,6 +22,8 @@ import {
   CheckBoxText,
   DivAlignCheckbox,
   DivAlignCenter,
+  ButtonCopy,
+  DivAlignIcon,
 } from "./styles";
 
 export default function MainBox() {
@@ -29,6 +35,9 @@ export default function MainBox() {
   const [caracteresEspeciais, setCaracteresEspeciais] = useState(false);
 
   const handlePasswordLength = (e) => {
+    if (!maiusculas && !minusculas && !numeros && !caracteresEspeciais) {
+      notify("Selecione pelo menos uma opção", true);
+    }
     let lista = "";
 
     if (maiusculas) {
@@ -61,13 +70,52 @@ export default function MainBox() {
     return senha;
   };
 
-  // function escutaValor() {
-  //   console.log(numeros);
-  // }
+  const copyToClipboard = () => {
+    const newTextArea = document.createElement("textarea");
+    newTextArea.innerText = password;
+    document.body.appendChild(newTextArea);
+    newTextArea.select();
+    document.execCommand("copy");
+    newTextArea.remove();
+  };
+
+  const handleCopyPassword = () => {
+    copyToClipboard();
+    notify(COPY_SUCCESS);
+  };
+
+  const notify = (message, erro = false) => {
+    if (erro) {
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.success(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
     <BoxStyled>
-      <ButtonGeneratorInput value={password} />
+      <DivAlignIcon>
+        <ButtonGeneratorInput value={password} />
+        <ButtonCopy onClick={handleCopyPassword}>
+          <FiCopy size={30} />
+        </ButtonCopy>
+      </DivAlignIcon>
 
       <DivAlignCenter>
         <DivAlignCheckbox style={{ marginBottom: "8%" }}>
@@ -131,6 +179,19 @@ export default function MainBox() {
       <ButtonGenerator onClick={handlePasswordLength}>
         <ButtonGeneratorText>Gerar senha</ButtonGeneratorText>
       </ButtonGenerator>
+
+      <ToastContainer
+        theme="dark"
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BoxStyled>
   );
 }

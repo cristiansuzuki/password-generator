@@ -23,6 +23,11 @@ export const ButtonGenerator = styled.button`
   border: 1px solid #007a33;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  :hover {
+    transition: 0.2s ease-in-out;
+    background-color: #121212;
+    cursor: pointer;
+  }
 `;
 
 export const DivAlignCenter = styled.div``;
@@ -55,4 +60,20 @@ export const ButtonGeneratorInput = styled.input`
   font-size: 22px;
   text-align: center;
   font-family: monospace;
+  :focus {
+    outline: none;
+  }
+`;
+
+export const ButtonCopy = styled.button`
+  background: transparent;
+  border: none;
+  color: #007a33;
+  margin-left: 1%;
+`;
+
+export const DivAlignIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 `;
