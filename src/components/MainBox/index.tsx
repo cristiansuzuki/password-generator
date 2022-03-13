@@ -164,7 +164,7 @@ export default function MainBox() {
       </DivAlignCenter>
 
       <Slider
-        color="success"
+        color="primary"
         aria-label="Small steps"
         defaultValue={0.00000005}
         step={1}
@@ -173,7 +173,7 @@ export default function MainBox() {
         max={20}
         valueLabelDisplay="auto"
         value={passwordLength}
-        onChange={(e) => setPasswordLength(e.target.value)}
+        onChange={(_e, value) => setPasswordLength(value[0] || value)}
       />
 
       <ButtonGenerator onClick={handlePasswordLength}>
