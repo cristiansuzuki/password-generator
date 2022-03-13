@@ -14,6 +14,9 @@ export const BoxStyled = styled.div`
   align-items: center;
   padding-left: 100px;
   padding-right: 100px;
+  > span {
+    color: #007a33;
+  }
 `;
 
 export const ButtonGenerator = styled.button`
