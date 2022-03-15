@@ -24,7 +24,7 @@ yarn
 ```bash
 yarn dev
 ```
-Isso irá rodar o projeto em um servidor local, caso uma janela do navegador não se inicie sozinha, clique no link gerado no terminal.
+Isso irá rodar o projeto em um servidor local, caso uma janela do navegador não se inicie sozinha, clique no link gerado no terminal
 
 ## Contribuições
 
