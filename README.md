@@ -1,6 +1,6 @@
 # Password Generator 🔐
 
-Feito em TypeScript com ViteJS e React, gera uma senha forte com base nas alternativas escolhidas pelo usuário.
+Feito em TypeScript com ViteJS e React, gera uma senha forte com base nas alternativas escolhidas pelo usuário
 
 ## Vercel
 
