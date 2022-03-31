@@ -70,6 +70,7 @@ export default function MainBox() {
     return senha;
   };
 
+//   Função de copiar
   const copyToClipboard = () => {
     const newTextArea = document.createElement("textarea");
     newTextArea.innerText = password;
